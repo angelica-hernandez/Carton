@@ -2,7 +2,7 @@ var Login= require("../models/Login");
 var Groceries= require("../models/Groceries");
 
 module.exports = function(app){
-    app.get("/api/login", function(req,res){
+    app.get("/api/login", function(req,res){//retrieves a unique user
         Login.findOne({
             where: {
                 u_name: req.query.u_name,
@@ -13,7 +13,7 @@ module.exports = function(app){
         })
     });
 
-    app.post("/api/register", function(req,res){
+    app.post("/api/register", function(req,res){//registers user
         Login.create({
             u_name: req.body.u_name,
             u_email: req.body.u_email,
@@ -24,7 +24,7 @@ module.exports = function(app){
         })
     });
 
-    app.post("/api/add",function(req,res){
+    app.post("/api/add",function(req,res){// add item
         // console.log(req);
         Groceries.create({
             user_id: 3,
@@ -36,4 +36,6 @@ module.exports = function(app){
             res.end();
         })
     });
+
+
 };

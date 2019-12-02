@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Signup.scss';
-=======
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "./Signup.scss";
->>>>>>> 116e269b2ab89fd5279978c766b156962c9e8957
+
 
 class Signup extends Component {
   state = {
@@ -35,7 +30,6 @@ class Signup extends Component {
     });
   };
 
-<<<<<<< HEAD
     confirmPassword = (event) => {
         this.setState({
             confirmPassword: event.target.value
@@ -67,21 +61,6 @@ class Signup extends Component {
                     <h2>Sign Up</h2>
                     <p>Please fill in this form to create an account.</p>
                     <hr></hr>
-=======
-  confirmPassword = event => {
-    this.setState({
-      confirmPassword: event.target.value
-    });
-  };
-  render() {
-    return (
-      <div className="login-form">
-        <form>
-          <h2>Sign Up</h2>
-          <p>Please fill in this form to create an account.</p>
-          <hr></hr>
->>>>>>> 116e269b2ab89fd5279978c766b156962c9e8957
-
           <div className="form-group">
             <div className="input-group">
               <span className="input-group-addon">
@@ -115,20 +94,6 @@ class Signup extends Component {
               ></input>
             </div>
           </div>
-
-<<<<<<< HEAD
-                    <div className="form-group">
-                        <div className="input-group">
-                            <span className="input-group-addon"><i className="fa fa-lock"></i></span>
-                            <input type="password" className="form-control" name="confirm_password" placeholder="Confirm Password" required="required" value={this.state.confirmPassword} onChange={this.confirmPassword}></input>
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <button onClick={this.submit_cred} className="btn btn-primary btn-lg">Sign Up</button>
-                    </div>
-                </form>
-                <div className="text-center">Already have an account? <Link to="/login"><a>Login here</a></Link></div>
-=======
           <div className="form-group">
             <div className="input-group">
               <span className="input-group-addon">
@@ -145,8 +110,6 @@ class Signup extends Component {
               ></input>
             </div>
           </div>
->>>>>>> 116e269b2ab89fd5279978c766b156962c9e8957
-
           <div className="form-group">
             <div className="input-group">
               <span className="input-group-addon">
