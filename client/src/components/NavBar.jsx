@@ -1,21 +1,28 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
-import "./NavBar.scss";
 
 import Home from "./Home";
 import About from "./About";
 import Signup from "./Signup";
 import Login from "./Login";
 import Error from "./Error";
+import AddNew from "./AddNew";
+// import AddItem from "./AddItem";
+// import Add from "./Add";
+import navlogo from "../assets/navlogo.png";
+import "./NavBar.scss";
 
 class NavBar extends Component {
   state = {};
   render() {
     return (
       <Router>
-        <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+        <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-primary navbar-custom">
           <a className="navbar-brand" href="/">
-            Carton
+            <div className="logo">
+              <img src={navlogo} className="img-fluid logoImage" />
+              &nbsp;&nbsp;Carton
+            </div>
           </a>
           <button
             className="navbar-toggler"
@@ -29,7 +36,7 @@ class NavBar extends Component {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto">
+            <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to="/">
                   <a class="nav-link">
@@ -72,6 +79,9 @@ class NavBar extends Component {
           </Route>
           <Route path="/login" exact>
             <Login />
+          </Route>
+          <Route path="/additem" exact>
+            <AddNew />
           </Route>
           <Route path="/">
             <Error />

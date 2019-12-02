@@ -10,7 +10,7 @@ class Home extends Component {
     return (
       <div className="parent">
         <div className="left">
-          <h1>Carton</h1>
+          <h2>Detailed Grocery Spending Breakdown</h2>
           <br />
           <p>
             When you are on top of your spending. <br /> Manage your grocery
