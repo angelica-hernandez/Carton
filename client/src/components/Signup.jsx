@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './Signup.scss';
 
 class Signup extends Component {
@@ -33,6 +34,25 @@ class Signup extends Component {
             confirmPassword: event.target.value
         })
     }
+
+    submit_cred= (event) =>{
+        var cred={
+            u_name: this.state.username,
+            u_email: this.state.email,
+            u_pass: this.state.password
+        }
+        console.log(cred);
+        axios.post("/api/register",{
+            u_name: this.state.username,
+            u_email: this.state.email,
+            u_pass: this.state.password
+        })
+        .then(res=>{
+            console.log(res);
+        });
+
+    }
+
     render() { 
         return ( 
             <div className="login-form">
@@ -69,7 +89,7 @@ class Signup extends Component {
                         </div>
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn btn-primary btn-lg">Sign Up</button>
+                        <button onClick={this.submit_cred} className="btn btn-primary btn-lg">Sign Up</button>
                     </div>
                 </form>
                 <div className="text-center">Already have an account? <Link to="/login"><a>Login here</a></Link></div>
