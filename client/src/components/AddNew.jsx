@@ -10,9 +10,9 @@ class AddNew extends Component {
     this.state = {
       rows: [
         {
-          food: "butter",
+          food: "Item",
           quantity: 2,
-          price: 2,
+          price: 23,
           expirationDate: new Date()
         }
       ],

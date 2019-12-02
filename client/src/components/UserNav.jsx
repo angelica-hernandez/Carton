@@ -1,16 +1,12 @@
 import React, { Component } from "react";
+import navlogo from "../assets/navlogo.png";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 
-import Home from "./Home";
-import About from "./About";
-import Signup from "./Signup";
-import Login from "./Login";
-import Error from "./Error";
+import Home from "./Home.jsx";
+import Error from "./Error.jsx";
 import AddNew from "./AddNew";
-import navlogo from "../assets/navlogo.png";
-import "./NavBar.scss";
 
-class NavBar extends Component {
+class UserNavBar extends Component {
   state = {};
   render() {
     return (
@@ -36,28 +32,37 @@ class NavBar extends Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link to="/">
+                {/* <Link to="/">
                   <a class="nav-link">
                     Home <span class="sr-only">(current)</span>
                   </a>
-                </Link>
+                </Link> */}
               </li>
 
               <li className="nav-item">
-                <Link to="/about">
-                  <a class="nav-link">About</a>
+                <Link to="/profile">
+                  <a class="nav-link">Profile</a>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/signup">
-                  <a class="nav-link">Sign Up</a>
+                <Link to="/budget">
+                  <a class="nav-link">Budget</a>
                 </Link>
               </li>
-
               <li className="nav-item">
-                <Link to="/login">
+                <Link to="/addItem">
+                  <a class="nav-link">Grocery</a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/waste">
+                  <a class="nav-link">Waste</a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/logout">
                   <a className="nav-link text-light">
-                    <button className="btn btn-sm btn-light">Login</button>
+                    <button className="btn btn-sm btn-light">Logout</button>
                   </a>
                 </Link>
               </li>
@@ -69,17 +74,20 @@ class NavBar extends Component {
           <Route path="/" exact>
             <Home />
           </Route>
-          <Route path="/about" exact>
-            <About />
+          <Route path="/profile" exact>
+            {/* <Profile /> */}
           </Route>
-          <Route path="/signup" exact>
-            <Signup />
-          </Route>
-          <Route path="/login" exact>
-            <Login />
-          </Route>
-          <Route path="/additem" exact>
+          <Route path="/addItem" exact>
             <AddNew />
+          </Route>
+          <Route path="/budget" exact>
+            {/* <Budget /> */}
+          </Route>
+          <Route path="/waste" exact>
+            {/* <Waste /> */}
+          </Route>
+          <Route path="/logout" exact>
+            <Home />
           </Route>
           <Route path="/">
             <Error />
@@ -90,4 +98,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default UserNavBar;
