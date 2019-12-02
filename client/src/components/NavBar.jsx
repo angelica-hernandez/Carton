@@ -6,8 +6,9 @@ import About from "./About";
 import Signup from "./Signup";
 import Login from "./Login";
 import Error from "./Error";
-import AddItem from "./AddItem";
-import Add from "./Add";
+import AddNew from "./AddNew";
+// import AddItem from "./AddItem";
+// import Add from "./Add";
 import navlogo from "../assets/navlogo.png";
 import "./NavBar.scss";
 
@@ -79,11 +80,8 @@ class NavBar extends Component {
           <Route path="/login" exact>
             <Login />
           </Route>
-          <Route path="/add" exact>
-            <Add />
-          </Route>
           <Route path="/additem" exact>
-            <AddItem />
+            <AddNew />
           </Route>
           <Route path="/">
             <Error />
