@@ -13,11 +13,21 @@ var Groceries = sequelize.define("groceries", {
         type:Sequelize.STRING,
         primaryKey: true,
     },
+    quantity: {
+        type: Sequelize.INTEGER,
+    },
+    price: {
+        type: Sequelize.INTEGER
+    },
     experation_date: {
         type: Sequelize.STRING,
         allowNull: false
     },
     expired: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
+    },
+    completed: {
         type: Sequelize.BOOLEAN,
         allowNull: false
     }

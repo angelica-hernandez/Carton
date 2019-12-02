@@ -127,7 +127,7 @@ class Signup extends Component {
             </div>
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary btn-lg">
+            <button onClick={this.submit_cred} className="btn btn-primary btn-lg">
               Sign Up
             </button>
           </div>

@@ -18,6 +18,9 @@ var Login = sequelize.define("users", {
         type: Sequelize.STRING,
         allowNull: false
     },
+    budget: {
+        type: Sequelize.INTEGER,
+    },
     u_email: {
         type: Sequelize.STRING,
         allowNull: false
