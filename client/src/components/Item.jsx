@@ -33,15 +33,6 @@ export default props => {
         />
       </td>
       <td>
-        <input
-          type="text"
-          name="expiration"
-          value={item.expiration}
-          onChange={e => handleChange(e, "expiration", idx)}
-          className="form-control"
-        />
-      </td>
-      <td>
         {idx >= 0 && (
           <button
             className="btn btn-outline-danger btn-sm"

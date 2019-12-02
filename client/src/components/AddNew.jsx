@@ -50,7 +50,6 @@ class AddNew extends Component {
                     <th className="text-center">Food</th>
                     <th className="text-center">Quantity</th>
                     <th className="text-center">Price</th>
-                    <th className="text-center">Expiration Date</th>
                     <th />
                   </tr>
                 </thead>
