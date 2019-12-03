@@ -9,7 +9,6 @@ function test() {
   return (
     <div className="App">
       <UserNav />
-      <h1>Login in Successful!</h1>
     </div>
   );
 }

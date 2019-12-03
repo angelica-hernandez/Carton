@@ -7,6 +7,7 @@ import AddNew from "./AddNew";
 import Profile from "./Profile";
 import Chart from "./Chart";
 import navlogo from "../assets/navlogo.png";
+import Login from "./Login";
 import "./NavBar.scss";
 
 class NavBar extends Component {
@@ -35,18 +36,18 @@ class NavBar extends Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                {/* <Link to="/">
+                <Link to="/">
                   <a class="nav-link">
-                    Home <span class="sr-only">(current)</span>
+                    Profile <span class="sr-only">(current)</span>
                   </a>
-                </Link> */}
+                </Link>
               </li>
 
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to="/profile">
                   <a class="nav-link">Profile</a>
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link to="/chart">
                   <a class="nav-link">Budget</a>
@@ -71,6 +72,9 @@ class NavBar extends Component {
         <Switch>
           <Route path="/" exact>
             <Home />
+          </Route>
+          <Route path="/login" exact>
+            <Login />
           </Route>
           <Route path="/profile" exact>
             <Profile />
