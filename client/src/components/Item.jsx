@@ -33,13 +33,26 @@ export default props => {
         />
       </td>
       <td>
-        <input
+        {/* <input
           type="text"
           name="expiration"
           value={item.expiration}
           onChange={e => handleChange(e, "expiration", idx)}
           className="form-control"
-        />
+        /> */}
+        <select
+          value={item.type}
+          onChange={e => handleChange(e, "type", idx)}
+          name="type"
+        >
+          <option value="fruits">Fruits</option>
+          <option value="vegetables">Vegetables</option>
+          <option value="proteins">Proteins</option>
+          <option value="dairy">Dairy</option>
+          <option value="drinks">Drinks</option>
+          <option value="carbs">Carbohydrates</option>
+          <option value="others">Others</option>
+        </select>
       </td>
       <td>
         {idx >= 0 && (
