@@ -10,17 +10,17 @@ class AddNew extends Component {
     this.state = {
       rows: [
         {
-          food: "butter",
-          quantity: 2,
-          price: 2,
-          expirationDate: new Date()
+          food: "",
+          quantity: 0,
+          price: 0,
+          type: ""
         }
       ],
       newRow: {
         food: "",
         quantity: 0,
         price: 0,
-        expirationDate: ""
+        type: ""
       }
     };
     this.handleAddRow = this.handleAddRow.bind(this);
@@ -50,7 +50,7 @@ class AddNew extends Component {
                     <th className="text-center">Food</th>
                     <th className="text-center">Quantity</th>
                     <th className="text-center">Price</th>
-                    <th className="text-center">Expiration Date</th>
+                    <th className="text-center">Food Type</th>
                     <th />
                   </tr>
                 </thead>
@@ -112,7 +112,7 @@ class AddNew extends Component {
           this.setState({ ...this.state, newRow });
         }
         break;
-      case "expiration":
+      case "type":
       case "food":
         newRow[field] = e.target.value;
         this.setState({ ...this.state, newRow });
@@ -136,7 +136,7 @@ class AddNew extends Component {
           this.setState({ ...this.state, rows });
         }
         break;
-      case "expiration":
+      case "type":
       case "food":
         row[field] = e.target.value;
         rows[idx] = row;
@@ -148,17 +148,26 @@ class AddNew extends Component {
     }
   };
 
+  //   this.setState({
+  //     someState: obj
+  // }, () => {
+  //     this.afterSetStateFinished();
+  // });
+
   handleAddRow = () => {
     const rowToAdd = this.state.newRow;
-    this.setState({
-      rows: [...this.state.rows, rowToAdd],
-      newRow: {
-        food: "",
-        quantity: "",
-        price: "",
-        expirationDate: ""
+    this.setState(
+      {
+        rows: [...this.state.rows, rowToAdd],
+        newRow: {
+          food: "",
+          quantity: "",
+          price: "",
+          type: ""
+        }
       }
-    });
+      // ,() => console.log("New row added! ", this.state.rows)
+    );
   };
 
   handleRemoveRow = () => {

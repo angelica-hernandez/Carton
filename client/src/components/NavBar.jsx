@@ -7,8 +7,6 @@ import Signup from "./Signup";
 import Login from "./Login";
 import Error from "./Error";
 import AddNew from "./AddNew";
-// import AddItem from "./AddItem";
-// import Add from "./Add";
 import navlogo from "../assets/navlogo.png";
 import "./NavBar.scss";
 
