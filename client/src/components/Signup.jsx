@@ -126,31 +126,23 @@ class Signup extends Component {
           console.log("New user info", newUser);
         }
       );
-
-      // this.setState(initialState);
+        axios
+      	.post('/api/register',{
+          u_name: this.state.username,
+          u_email: this.state.email,
+          u_pass: this.state.password
+        })
+      	.then(
+      		(response) => {
+      			console.log(response);
+      		},
+      		(error) => {
+      			console.log(error);
+      		}
+      	);
     }
-
-    //pass new user info to backend to store into the database
-    // const headers = {
-    // 	'Content-Type': 'application/json',
-    // 	'Access-Control-Allow-Origin': '*',
-    // 	'Access-Control-Allow-Headers': 'Content-Type',
-    // 	'Acesss-Control-Allow-Methods': '*'
-    // };
-
-    // axios
-    // 	.post('/api/auth/register', newUser, {
-    // 		headers: headers
-    // 	})
-    // 	.then(
-    // 		(response) => {
-    // 			console.log(response);
-    // 		},
-    // 		(error) => {
-    // 			console.log(error);
-    // 		}
-    // 	);
   };
+  
   render() {
     return (
       <div className="login-form">

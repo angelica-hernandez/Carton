@@ -13,6 +13,16 @@ module.exports = function(app){
         })
     });
 
+    app.get("/api/inventory", function(req,res){//retrieves a unique user
+        Login.find({
+            where: {
+                user_id: req.query.user_id
+            }
+        }).then(result =>{
+            res.json(result);
+        })
+    });
+
     app.post("/api/register", function(req,res){//registers user
         Login.create({
             u_name: req.body.u_name,

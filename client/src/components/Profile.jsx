@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from "axios";
 import blankprofile from "../assets/blankprofile.png";
 
 import "./Profile.scss";
@@ -10,11 +11,21 @@ class Profile extends Component {
         super(props);
 
         this.state={
-            items:[]
+            items:[],
+            user_id: props.user_id,
+            inventory: []
         };
 
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
+    }
+
+    componentDidMount(){
+        axios.get("/api/inventory",{
+            params: {
+                user_id: this.state.user_id
+            }
+        }).then(res=>{});
     }
 
     addItem(e) {
