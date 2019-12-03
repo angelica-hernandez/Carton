@@ -1,0 +1,29 @@
+.ItemsNeed .header button {
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  margin-right: 0px;
+  background-color: lightblue;
+  color: black;
+  border: 3px solid lightblue;
+}
+
+.ItemsNeed .header button:hover {
+  background-color: lightgrey;
+  border: 3px solid lightgrey;
+  cursor: pointer;
+}
+
+.ItemsNeed .list li {
+  color: #333;
+  background-color: lightblue;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-out;
+}
+
+.ItemsNeed .list li:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}

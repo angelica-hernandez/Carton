@@ -79,12 +79,12 @@ class NavBar extends Component {
           <Route path="/login" exact>
             <Login />
           </Route>
-          <Route path="/additem" exact>
+          {/* <Route path="/additem" exact>
             <AddNew />
-          </Route>
-          <Route path="/chart" exact>
+          </Route> */}
+          {/* <Route path="/chart" exact>
             <Chart foodBreakdown={[10, 10, 20, 20, 30, 40, 2]} />
-          </Route>
+          </Route> */}
           <Route path="/">
             <Error />
           </Route>

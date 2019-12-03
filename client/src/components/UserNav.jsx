@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import Error from "./Error";
 import AddNew from "./AddNew";
+import Profile from "./Profile";
+import Chart from "./Chart";
 import navlogo from "../assets/navlogo.png";
 import "./NavBar.scss";
 
@@ -46,7 +48,7 @@ class NavBar extends Component {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/budget">
+                <Link to="/chart">
                   <a class="nav-link">Budget</a>
                 </Link>
               </li>
@@ -70,12 +72,12 @@ class NavBar extends Component {
           <Route path="/" exact>
             <Home />
           </Route>
-          {/* <Route path="/profile" exact>
+          <Route path="/profile" exact>
             <Profile />
-          </Route> */}
-          {/* <Route path="/budget" exact>
-            <Budget />
-          </Route> */}
+          </Route>
+          <Route path="/chart" exact>
+            <Chart foodBreakdown={[10, 10, 20, 20, 30, 40, 2]} />
+          </Route>
           <Route path="/additem" exact>
             <AddNew />
           </Route>

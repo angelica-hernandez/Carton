@@ -3,17 +3,15 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
+import UserNav from "../src/components/UserNav";
 
-import NavBar from "./components/NavBar";
-// import UserNav from "./components/UserNav";
-
-function App() {
+function test() {
   return (
     <div className="App">
-      <NavBar />
-      {/* <UserNav /> */}
+      <UserNav />
+      <h1>Login in Successful!</h1>
     </div>
   );
 }
 
-export default App;
+export default test;

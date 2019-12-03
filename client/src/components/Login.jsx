@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Login.scss";
+import Test from "../test";
+import ReactDOM from "react-dom";
 
 const initialState = {
   username: "",
@@ -53,34 +55,24 @@ class Login extends Component {
     const isValid = this.validateInput();
     if (isValid) {
       this.setState(initialState);
-
-      //send to backend to verify credentials
-      // const headers = {
-      //   "Content-Type": "application/json",
-      //   "Access-Control-Allow-Origin": "*",
-      //   "Access-Control-Allow-Headers": "Content-Type",
-      //   "Acesss-Control-Allow-Methods": "*"
-      // };
-
-      // axios
-      //   .post("/api/auth/login", existingUser, {
-      //     headers: headers
-      //   })
-      //   .then(
-      //     response => {
-      //       console.log(response);
-      //       if (response.status === 202) {
-      //         //REDIRECT TO A NEW PAGE
-      //         console.log("Logged in successfully!");
-      //       } else {
-      //         console.log(response);
-      //         // console.log('Login unsuccessful');
-      //       }
-      //     },
-      //     error => {
-      //       console.log(error);
-      //     }
-      //   );
+      axios
+        .get("/api/login", {
+          params: {
+            u_name: this.state.username,
+            u_pass: this.state.password
+          }
+        })
+        .then(
+          response => {
+            console.log(response);
+            if (response) {
+              ReactDOM.render(<Test />, document.getElementById("root"));
+            }
+          },
+          error => {
+            console.log(error);
+          }
+        );
     }
   };
 
