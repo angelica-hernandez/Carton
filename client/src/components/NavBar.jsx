@@ -8,6 +8,7 @@ import Login from "./Login";
 import Error from "./Error";
 import AddNew from "./AddNew";
 import navlogo from "../assets/navlogo.png";
+import Chart from "./Chart";
 import "./NavBar.scss";
 
 class NavBar extends Component {
@@ -80,6 +81,9 @@ class NavBar extends Component {
           </Route>
           <Route path="/additem" exact>
             <AddNew />
+          </Route>
+          <Route path="/chart" exact>
+            <Chart foodBreakdown={[10, 10, 20, 20, 30, 40, 2]} />
           </Route>
           <Route path="/">
             <Error />
