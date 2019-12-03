@@ -8,6 +8,13 @@
     border: 3px solid lightblue;
 }
 
+.ItemsNeed .header input {
+    padding: 10px;
+    font-size:16px;
+    border:3px solid #add8e6;
+    width:165px;
+}
+
 .ItemsNeed .header button:hover{
     background-color:lightgrey;
     border: 3px solid lightgrey;
@@ -21,6 +28,7 @@
     margin-bottom:15px;
     border-radius:5px;
     transition:background-color .2s ease-out;
+    list-style-type:none;
 }
 
 .ItemsNeed .list li:hover{

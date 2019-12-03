@@ -4,6 +4,7 @@ import blankprofile from "../assets/blankprofile.png";
 
 import "./Profile.scss";
 import ToBuyList from "./ToBuyList";
+import SettingBudget from "./SettingBudget";
 
 class Profile extends Component {
     state = {  }
