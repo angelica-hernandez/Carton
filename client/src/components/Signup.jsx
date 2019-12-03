@@ -1,16 +1,23 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import './Signup.scss';
+import React, { Component } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import Modal from "./Modal";
+import "./Signup.scss";
 
+const initialState = {
+  username: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+  usernameError: "",
+  emailError: "",
+  passwordError: "",
+  confirmError: "",
+  showModal: false
+};
 
 class Signup extends Component {
-  state = {
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: ""
-  };
+  state = initialState;
 
   getUsername = event => {
     this.setState({
@@ -30,41 +37,132 @@ class Signup extends Component {
     });
   };
 
-    confirmPassword = (event) => {
-        this.setState({
-            confirmPassword: event.target.value
-        })
+  confirmPassword = event => {
+    this.setState({
+      confirmPassword: event.target.value
+    });
+  };
+
+  validate = () => {
+    let { username, email, password } = this.state;
+    let usernameError = "";
+
+    /*username validation
+     * 1. username must not be taken (unique)
+     * 2. username must be longer than 3 characters
+     */
+    if (username.length <= 3) {
+      usernameError = "Username must be longer than 3 characters";
+      this.setState({
+        usernameError
+      });
+    } else {
+      usernameError = "";
+      this.setState({
+        usernameError
+      });
+    }
+  };
+
+  validateInput = () => {
+    let usernameError = "";
+    let emailError = "";
+    let passwordError = "";
+    let confirmError = "";
+
+    if (!this.state.username) {
+      usernameError = "Username cannot not be blank";
+    }
+    if (this.state.username.length <= 3) {
+      usernameError = "Username must be longer than 3 characters";
+    }
+    if (!this.state.email.includes("@")) {
+      emailError = "Invalid Email";
+    }
+    if (this.state.password < 3) {
+      passwordError = "Password must be longer than 3 characters";
+    }
+    if (!this.state.password) {
+      passwordError = "Password cannot be blank";
     }
 
-    submit_cred= (event) =>{
-        var cred={
-            u_name: this.state.username,
-            u_email: this.state.email,
-            u_pass: this.state.password
+    if (this.state.password <= 3) {
+      passwordError = "Password must be longer than 3 characters";
+    }
+
+    if (this.state.password != this.state.confirmPassword) {
+      confirmError = "Passwords do not match";
+    }
+
+    if (emailError || usernameError || passwordError || confirmError) {
+      this.setState({ emailError, usernameError, passwordError, confirmError });
+      return false;
+    }
+
+    return true;
+  };
+
+  clearFields = () => {
+    this.setState(initialState);
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    let { username, email, password, showModal: show } = this.state;
+    const newUser = {
+      username,
+      email,
+      password,
+      show
+    };
+
+    const isValid = this.validateInput();
+    if (isValid) {
+      this.setState(
+        {
+          showModal: true
+        },
+        () => {
+          console.log("New user info", newUser);
         }
-        console.log(cred);
-        axios.post("/api/register",{
-            u_name: this.state.username,
-            u_email: this.state.email,
-            u_pass: this.state.password
-        })
-        .then(res=>{
-            console.log(res);
-        });
+      );
 
+      // this.setState(initialState);
     }
 
-    render() { 
-        return ( 
-            <div className="login-form">
-                <form>
-                    <h2>Sign Up</h2>
-                    <p>Please fill in this form to create an account.</p>
-                    <hr></hr>
+    //pass new user info to backend to store into the database
+    // const headers = {
+    // 	'Content-Type': 'application/json',
+    // 	'Access-Control-Allow-Origin': '*',
+    // 	'Access-Control-Allow-Headers': 'Content-Type',
+    // 	'Acesss-Control-Allow-Methods': '*'
+    // };
+
+    // axios
+    // 	.post('/api/auth/register', newUser, {
+    // 		headers: headers
+    // 	})
+    // 	.then(
+    // 		(response) => {
+    // 			console.log(response);
+    // 		},
+    // 		(error) => {
+    // 			console.log(error);
+    // 		}
+    // 	);
+  };
+  render() {
+    return (
+      <div className="login-form">
+        <form>
+          <h2>Sign Up</h2>
+          <p>Please fill in this form to create an account.</p>
+          <hr />
+
           <div className="form-group">
             <div className="input-group">
               <span className="input-group-addon">
-                <i className="fa fa-user"></i>
+                <i className="fa fa-user" />
               </span>
               <input
                 type="text"
@@ -74,14 +172,15 @@ class Signup extends Component {
                 required="required"
                 value={this.state.username}
                 onChange={this.getUsername}
-              ></input>
+              />
             </div>
+            <div className="errorValidation">{this.state.usernameError}</div>
           </div>
 
           <div className="form-group">
             <div className="input-group">
               <span className="input-group-addon">
-                <i className="fa fa-paper-plane"></i>
+                <i className="fa fa-paper-plane" />
               </span>
               <input
                 type="email"
@@ -91,13 +190,15 @@ class Signup extends Component {
                 required="required"
                 value={this.state.email}
                 onChange={this.getEmail}
-              ></input>
+              />
             </div>
+            <div className="errorValidation">{this.state.emailError}</div>
           </div>
+
           <div className="form-group">
             <div className="input-group">
               <span className="input-group-addon">
-                <i className="fa fa-lock"></i>
+                <i className="fa fa-lock" />
               </span>
               <input
                 type="password"
@@ -107,13 +208,15 @@ class Signup extends Component {
                 required="required"
                 value={this.state.password}
                 onChange={this.getPassword}
-              ></input>
+              />
             </div>
+            <div className="errorValidation">{this.state.passwordError}</div>
           </div>
+
           <div className="form-group">
             <div className="input-group">
               <span className="input-group-addon">
-                <i className="fa fa-lock"></i>
+                <i className="fa fa-lock" />
               </span>
               <input
                 type="password"
@@ -123,13 +226,29 @@ class Signup extends Component {
                 required="required"
                 value={this.state.confirmPassword}
                 onChange={this.confirmPassword}
-              ></input>
+              />
             </div>
+            <div className="errorValidation">{this.state.confirmError}</div>
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary btn-lg">
+            <button
+              onClick={e => this.onSubmit(e)}
+              type="submit"
+              className="btn btn-primary btn-lg"
+            >
               Sign Up
             </button>
+            {this.state.showModal && (
+              <Modal
+                image={require("../assets/success.png")}
+                width={150}
+                title={"Success!"}
+                content={"Account registered successfully."}
+                additional={"Login here."}
+                cta={"Login"}
+                page={"/login"}
+              />
+            )}
           </div>
         </form>
         <div className="text-center">
